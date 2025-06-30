@@ -1,105 +1,266 @@
 "use client";
-
+import React from "react";
 import Navigation from "@/components/layout/navigation";
+
 import { motion } from "framer-motion";
+import Image from "next/image";
+import { Clock, MapPin, Phone, Star } from "lucide-react";
 
-const team = [
-  {
-    name: "John Smith",
-    role: "Master Barber",
-    bio: "With over 15 years of experience, John specializes in classic cuts and traditional shaves.",
-    image: "/team/john.jpg",
-  },
-  {
-    name: "Michael Johnson",
-    role: "Senior Barber",
-    bio: "Michael brings his artistic vision to every cut, creating unique styles that complement each client's features.",
-    image: "/team/michael.jpg",
-  },
-  {
-    name: "David Wilson",
-    role: "Beard Specialist",
-    bio: "David is our go-to expert for beard grooming and styling, with a passion for creating the perfect shape.",
-    image: "/team/david.jpg",
-  },
-  {
-    name: "Robert Brown",
-    role: "Junior Barber",
-    bio: "Robert combines modern techniques with traditional methods to deliver exceptional results.",
-    image: "/team/robert.jpg",
-  },
-];
+export default function AboutPage() {
+  const teamMembers = [
+    {
+      name: "Nemar",
+      role: "The Clipperhands",
+      experience: "8+ Years",
+      image: "/team/Nemar.jpeg"
+    },
+    {
+      name: "Humam",
+      role: "The Fade Technician",
+      experience: "3+ Years", 
+      image: "/team/humam.jpeg"
+    },
+    {
+      name: "Ali",
+      role: "Mr.Scissorhands",
+      experience: "8+ Years",
+      image: "/team/Ali.jpeg"
+    },
+    {
+      name: "Akram",
+      role: "The Style Master",
+      experience: "5+ Years",
+      image: "/team/Akram.jpeg"
+    }
+  ];
 
-export default function TeamPage() {
   return (
-    <main className="min-h-screen bg-white">
+    <>
       <Navigation />
       
-      <div className="pt-24 pb-16">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <motion.h1 
-              className="font-serif text-4xl md:text-5xl font-bold mb-4"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5 }}
-            >
-              Meet Our Team
-            </motion.h1>
-            <motion.p 
-              className="text-lg text-gray-600 max-w-2xl mx-auto"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.1 }}
-            >
-              Our skilled barbers are dedicated to providing you with the best grooming experience
-            </motion.p>
-          </div>
+      {/* Hero Section */}
+      <section className="relative h-[60vh] flex items-center justify-center overflow-hidden -mt-20">
+        <Image
+          src="/images/hero-bg.jpg"
+          alt="About Clasico Barbershop"
+          fill
+          className="object-cover"
+          priority
+          quality={90}
+          sizes="100vw"
+        />
+        <div className="absolute inset-0 bg-black/60" />
+        <div className="container-custom relative z-10 text-center">
+          <motion.h1
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            className="text-4xl md:text-6xl font-display text-white mb-4"
+          >
+            About Us
+          </motion.h1>
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+            className="text-lg md:text-xl text-white/90 max-w-2xl mx-auto"
+          >
+            Discover the story, values, and people behind Clasico Barbershop.
+          </motion.p>
+        </div>
+      </section>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {team.map((member, index) => (
-              <motion.div
-                key={member.name}
-                className="text-center"
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-              >
-                <div className="relative w-48 h-48 mx-auto mb-4 rounded-full overflow-hidden">
-                  <div className="absolute inset-0 bg-gold/20" />
-                  <div 
-                    className="w-full h-full bg-cover bg-center"
-                    style={{
-                      backgroundImage: `url(${member.image})`,
-                    }}
-                  />
+      {/* About the Shop Section */}
+      <section className="py-20 bg-gradient-to-b from-white to-gray-50">
+        <div className="container-custom">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            viewport={{ once: true }}
+            className="text-center mb-16"
+          >
+            <h2 className="text-4xl md:text-5xl font-display mb-6 text-black">
+              Our Story
+            </h2>
+            <p className="text-xl text-black/70 max-w-4xl mx-auto leading-relaxed">
+              Founded in 2022, Clasico Barbershop has been the premier destination for men's grooming in our community. 
+              We blend traditional barbering techniques with modern luxury to create an experience that goes beyond just a haircut.
+            </p>
+          </motion.div>
+
+          <div className="grid md:grid-cols-2 gap-16 items-center">
+            <motion.div
+              initial={{ opacity: 0, x: -30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.8 }}
+              viewport={{ once: true }}
+            >
+              <h3 className="text-3xl font-display mb-6 text-black">Our Mission</h3>
+              <p className="text-black/80 mb-6 leading-relaxed">
+                At Clasico Barbershop, we believe that every man deserves to look and feel his best. Our mission is to provide 
+                exceptional grooming services in a welcoming, sophisticated environment where tradition meets innovation.
+              </p>
+              <p className="text-black/80 mb-8 leading-relaxed">
+                We take pride in our attention to detail, commitment to quality, and the relationships we build with our clients. 
+                Every visit is an opportunity to transform not just your appearance, but your confidence.
+              </p>
+              
+              <div className="grid grid-cols-2 gap-6">
+                <div className="text-center p-4 bg-white rounded-lg shadow-sm">
+                  <div className="text-3xl font-bold text-yellow-600 mb-2">15+</div>
+                  <div className="text-sm text-black/70">Years Experience</div>
                 </div>
-                <h3 className="font-serif text-xl font-bold mb-1">{member.name}</h3>
-                <p className="text-gold mb-3">{member.role}</p>
-                <p className="text-gray-600">{member.bio}</p>
+                <div className="text-center p-4 bg-white rounded-lg shadow-sm">
+                  <div className="text-3xl font-bold text-yellow-600 mb-2">10K+</div>
+                  <div className="text-sm text-black/70">Happy Clients</div>
+                </div>
+              </div>
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, x: 30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.8 }}
+              viewport={{ once: true }}
+              className="relative aspect-video rounded-2xl overflow-hidden shadow-2xl"
+            >
+              <Image
+                src="/team/team.jpeg"
+                alt="Clasico Barbershop Interior"
+                fill
+                className="object-cover"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent" />
+            </motion.div>
+          </div>
+        </div>
+      </section>
+
+      {/* Values Section */}
+      <section className="py-20 bg-white">
+        <div className="container-custom">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            viewport={{ once: true }}
+            className="text-center mb-16"
+          >
+            <h2 className="text-4xl md:text-5xl font-display mb-6 text-black">
+              Our Values
+            </h2>
+            <p className="text-xl text-black/70 max-w-3xl mx-auto">
+              The principles that guide everything we do at Clasico Barbershop
+            </p>
+          </motion.div>
+
+          <div className="grid md:grid-cols-3 gap-8">
+            {[
+              {
+                title: "Excellence",
+                description: "We strive for perfection in every cut, every service, and every interaction with our clients."
+              },
+              {
+                title: "Tradition",
+                description: "We honor the timeless art of barbering while embracing modern techniques and trends."
+              },
+              {
+                title: "Community",
+                description: "We're more than a barbershop - we're a gathering place for men to connect and share stories."
+              }
+            ].map((value, index) => (
+              <motion.div
+                key={value.title}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: index * 0.2 }}
+                viewport={{ once: true }}
+                className="text-center p-8 bg-gray-50 rounded-xl"
+              >
+                <h3 className="text-2xl font-display mb-4 text-black">{value.title}</h3>
+                <p className="text-black/70 leading-relaxed">{value.description}</p>
               </motion.div>
             ))}
           </div>
-
-          <motion.div 
-            className="mt-16 text-center"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.4 }}
-          >
-            <h2 className="font-serif text-3xl font-bold mb-4">Join Our Team</h2>
-            <p className="text-gray-600 max-w-2xl mx-auto mb-8">
-              We're always looking for talented barbers who share our passion for excellence and customer service.
-            </p>
-            <a
-              href="/contact"
-              className="inline-block bg-black text-white px-8 py-3 rounded-md hover:bg-black-light transition-colors"
-            >
-              Apply Now
-            </a>
-          </motion.div>
         </div>
-      </div>
-    </main>
+      </section>
+
+      {/* Meet the Team Section */}
+      <section className="py-20 bg-gradient-to-b from-gray-50 to-white">
+        <div className="container-custom">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            viewport={{ once: true }}
+            className="text-center mb-16"
+          >
+            <h2 className="text-4xl md:text-5xl font-display mb-6 text-black">
+              Meet the Team
+            </h2>
+            <p className="text-xl text-black/70 max-w-3xl mx-auto">
+              Our skilled professionals are passionate about their craft and dedicated to providing you with the best grooming experience.
+            </p>
+          </motion.div>
+
+          <div className="grid md:grid-cols-2 gap-8">
+            {teamMembers.map((member, index) => (
+              <motion.div
+                key={member.name}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: index * 0.2 }}
+                viewport={{ once: true }}
+                className="bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300"
+              >
+                <div className="relative h-[32rem]">
+                  <Image
+                    src={member.image}
+                    alt={member.name}
+                    fill
+                    className="object-cover object-top"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
+                </div>
+                <div className="p-6">
+                  <h3 className="text-2xl font-display mb-2 text-black">{member.name}</h3>
+                  <p className="text-yellow-600 font-semibold mb-3">{member.role}</p>
+                  <div className="space-y-2 text-sm text-black/70">
+                    <div className="flex items-center gap-2">
+                      <Star className="w-4 h-4 text-yellow-500" />
+                      <span>{member.experience} Experience</span>
+                    </div>
+                  </div>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Contact Info Section */}
+      <section className="py-16 bg-black text-white">
+        <div className="container-custom">
+          <div className="grid md:grid-cols-3 gap-8 text-center">
+            <div className="flex flex-col items-center">
+              <MapPin className="w-8 h-8 text-yellow-500 mb-4" />
+              <h3 className="text-xl font-semibold mb-2">Visit Us</h3>
+              <p className="text-white/80">3480 Platinum Dr., Unit 105<br />Mississauga, ON L5M 2S4</p>
+            </div>
+            <div className="flex flex-col items-center">
+              <Clock className="w-8 h-8 text-yellow-500 mb-4" />
+              <h3 className="text-xl font-semibold mb-2">Hours</h3>
+              <p className="text-white/80">Mon-Sat: 10AM-10PM</p>
+            </div>
+            <div className="flex flex-col items-center">
+              <Phone className="w-8 h-8 text-yellow-500 mb-4" />
+              <h3 className="text-xl font-semibold mb-2">Call Us</h3>
+              <p className="text-white/80">(647) 559-4641<br />hello@clasicobarbershop.com</p>
+            </div>
+          </div>
+        </div>
+      </section>
+    </>
   );
 } 
