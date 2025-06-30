@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Inter, Playfair_Display } from "next/font/google";
 import "./globals.css";
 import Footer from "../components/sections/Footer";
@@ -24,11 +24,28 @@ const playfair = Playfair_Display({
   display: 'swap',
 });
 
+export const viewport: Viewport = {
+  width: 'device-width',
+  initialScale: 1,
+  maximumScale: 5,
+  userScalable: true,
+  viewportFit: 'cover',
+  themeColor: '#D4AF37',
+}
+
 export const metadata: Metadata = {
   title: 'Clasico Barbershop | Luxury Grooming Experience',
   description: 'Experience the art of premium grooming at Clasico Barbershop. Where tradition meets innovation in a sophisticated atmosphere.',
   keywords: 'barbershop, luxury grooming, premium haircuts, beard trim, shaving, men\'s grooming',
   authors: [{ name: 'Clasico Barbershop' }],
+  appleWebApp: {
+    capable: true,
+    statusBarStyle: 'default',
+    title: 'Clasico Barbershop',
+  },
+  formatDetection: {
+    telephone: false,
+  },
   openGraph: {
     title: 'Clasico Barbershop | Luxury Grooming Experience',
     description: 'Experience the art of premium grooming at Clasico Barbershop. Where tradition meets innovation in a sophisticated atmosphere.',
@@ -45,6 +62,12 @@ export const metadata: Metadata = {
     locale: 'en_US',
     type: 'website',
   },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Clasico Barbershop | Luxury Grooming Experience',
+    description: 'Experience the art of premium grooming at Clasico Barbershop.',
+    images: ['/images/og-image.jpg'],
+  },
 };
 
 export default function RootLayout({
@@ -55,11 +78,24 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${inter.variable} ${playfair.variable}`}>
       <head>
+        {/* Mobile-specific meta tags */}
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+        <meta name="apple-mobile-web-app-title" content="Clasico Barbershop" />
+        <meta name="format-detection" content="telephone=no" />
+        <meta name="mobile-web-app-capable" content="yes" />
+        
         {/* Preconnect to important domains */}
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link rel="preconnect" href="https://maps.googleapis.com" />
         <link rel="preconnect" href="https://maps.gstatic.com" />
+        
+        {/* PWA icons */}
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+        <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+        <link rel="manifest" href="/site.webmanifest" />
         
         {/* Structured data */}
         <Script
@@ -72,7 +108,7 @@ export default function RootLayout({
         <CustomCursor />
         <Navigation />
         <ErrorBoundary>
-          <main className="pt-24">
+          <main className="pt-20 sm:pt-24">
             {children}
           </main>
         </ErrorBoundary>

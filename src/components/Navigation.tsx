@@ -19,6 +19,19 @@ export default function Navigation() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  // Close mobile menu when clicking outside
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      const target = event.target as Element;
+      if (isMobileMenuOpen && !target.closest('nav')) {
+        setIsMobileMenuOpen(false);
+      }
+    };
+
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => document.removeEventListener('mousedown', handleClickOutside);
+  }, [isMobileMenuOpen]);
+
   const handleBookNow = () => {
     window.open('https://booking.cojilio.com/clasicobarbershop', '_blank');
   };
@@ -26,28 +39,29 @@ export default function Navigation() {
   return (
     <nav
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 border-b border-gold/20 shadow-sm ${
-        isScrolled ? 'bg-black/90 backdrop-blur-sm' : 'bg-black'
+        isScrolled ? 'bg-black/95 backdrop-blur-sm' : 'bg-black'
       }`}
     >
       <div className="container-custom">
-        <div className="relative flex items-center justify-between py-4 md:py-6">
-          {/* Left: Barbershop Name */}
+        <div className="relative flex items-center justify-between py-3 md:py-6">
+          {/* Left: Barbershop Name - Mobile optimized */}
           <div className="flex-1 flex items-center min-w-0">
-            <Link href="/" className="text-2xl md:text-3xl font-display text-gold tracking-wide z-10 pl-2 md:pl-4 whitespace-nowrap">
-              Clasico Barbershop
+            <Link href="/" className="text-xl sm:text-2xl md:text-3xl font-display text-gold tracking-wide z-10 pl-2 md:pl-4 whitespace-nowrap">
+              <span className="hidden sm:inline">Clasico Barbershop</span>
+              <span className="sm:hidden">Clasico</span>
             </Link>
           </div>
 
-          {/* Center: Logo */}
+          {/* Center: Logo - Mobile optimized */}
           <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 flex items-center justify-center z-0">
-            <Link href="/">
+            <Link href="/" className="touch-manipulation">
               <Image
                 src="/images/navbar/Logo GD-Photoroom.png"
                 alt="Clasico Barbershop Logo"
                 width={240}
                 height={240}
                 priority
-                className="object-contain h-24 md:h-28 w-auto drop-shadow-lg"
+                className="object-contain h-16 sm:h-20 md:h-24 lg:h-28 w-auto drop-shadow-lg"
               />
             </Link>
           </div>
@@ -68,20 +82,21 @@ export default function Navigation() {
             </Link>
             <button 
               onClick={handleBookNow}
-              className="ml-2 bg-white text-black hover:bg-gold hover:text-white px-6 py-2 rounded-md font-semibold shadow-gold transition-all"
+              className="ml-2 bg-white text-black hover:bg-gold hover:text-white px-6 py-2 rounded-md font-semibold shadow-gold transition-all touch-manipulation"
             >
               Book Now
             </button>
           </div>
 
-          {/* Mobile Menu Button */}
+          {/* Mobile Menu Button - Enhanced touch target */}
           <button
-            className="md:hidden text-gold absolute right-4 top-1/2 -translate-y-1/2 z-10 p-2"
+            className="md:hidden text-gold absolute right-2 top-1/2 -translate-y-1/2 z-10 p-3 touch-manipulation"
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+            aria-label="Toggle mobile menu"
           >
             <span className="sr-only">Open menu</span>
             <svg
-              className="h-7 w-7"
+              className="h-6 w-6"
               fill="none"
               strokeLinecap="round"
               strokeLinejoin="round"
@@ -99,53 +114,58 @@ export default function Navigation() {
         </div>
       </div>
 
-      {/* Mobile Menu */}
+      {/* Mobile Menu - Enhanced */}
       <AnimatePresence>
         {isMobileMenuOpen && (
           <motion.div
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: 'auto' }}
             exit={{ opacity: 0, height: 0 }}
-            className="md:hidden bg-black/95 backdrop-blur-sm"
+            className="md:hidden bg-black/98 backdrop-blur-md border-t border-gold/20"
           >
-            <div className="container-custom py-4 space-y-4">
-              <Link
-                href="/services"
-                className="block text-gold hover:text-gold/80 transition-colors"
-                onClick={() => setIsMobileMenuOpen(false)}
-              >
-                Services
-              </Link>
-              <Link
-                href="/gallery"
-                className="block text-gold hover:text-gold/80 transition-colors"
-                onClick={() => setIsMobileMenuOpen(false)}
-              >
-                Gallery
-              </Link>
-              <Link
-                href="/about"
-                className="block text-gold hover:text-gold/80 transition-colors"
-                onClick={() => setIsMobileMenuOpen(false)}
-              >
-                About
-              </Link>
-              <Link
-                href="/contact"
-                className="block text-gold hover:text-gold/80 transition-colors"
-                onClick={() => setIsMobileMenuOpen(false)}
-              >
-                Contact
-              </Link>
-              <button 
-                onClick={() => {
-                  handleBookNow();
-                  setIsMobileMenuOpen(false);
-                }}
-                className="w-full bg-white text-black hover:bg-gold hover:text-white px-6 py-2 rounded-md font-semibold shadow-gold transition-all"
-              >
-                Book Now
-              </button>
+            <div className="container-custom py-6 space-y-6">
+              <div className="grid grid-cols-1 gap-4">
+                <Link
+                  href="/services"
+                  className="block text-gold hover:text-gold/80 transition-colors text-lg font-medium py-3 px-4 rounded-lg hover:bg-white/5 touch-manipulation"
+                  onClick={() => setIsMobileMenuOpen(false)}
+                >
+                  Services
+                </Link>
+                <Link
+                  href="/gallery"
+                  className="block text-gold hover:text-gold/80 transition-colors text-lg font-medium py-3 px-4 rounded-lg hover:bg-white/5 touch-manipulation"
+                  onClick={() => setIsMobileMenuOpen(false)}
+                >
+                  Gallery
+                </Link>
+                <Link
+                  href="/about"
+                  className="block text-gold hover:text-gold/80 transition-colors text-lg font-medium py-3 px-4 rounded-lg hover:bg-white/5 touch-manipulation"
+                  onClick={() => setIsMobileMenuOpen(false)}
+                >
+                  About
+                </Link>
+                <Link
+                  href="/contact"
+                  className="block text-gold hover:text-gold/80 transition-colors text-lg font-medium py-3 px-4 rounded-lg hover:bg-white/5 touch-manipulation"
+                  onClick={() => setIsMobileMenuOpen(false)}
+                >
+                  Contact
+                </Link>
+              </div>
+              
+              <div className="pt-4 border-t border-gold/20">
+                <button 
+                  onClick={() => {
+                    handleBookNow();
+                    setIsMobileMenuOpen(false);
+                  }}
+                  className="w-full bg-white text-black hover:bg-gold hover:text-white px-6 py-4 rounded-lg font-semibold shadow-gold transition-all touch-manipulation text-lg"
+                >
+                  Book Now
+                </button>
+              </div>
             </div>
           </motion.div>
         )}
