@@ -32,7 +32,11 @@ const fadeInUp = {
 
 export default function Home() {
   const handleBookNow = () => {
+<<<<<<< HEAD
     scrollToSection('booking');
+=======
+    window.open('https://booking.cojilio.com/clasicobarbershop', '_blank');
+>>>>>>> d1a22c5 (Fix build: correct Navigation import, add @ alias to tsconfig, fix useScrollAnimation hook, rename analytics.tsx)
   };
 
   return (

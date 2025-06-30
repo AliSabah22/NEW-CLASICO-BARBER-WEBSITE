@@ -20,7 +20,14 @@
       {
         "name": "next"
       }
+<<<<<<< HEAD
     ]
+=======
+    ],
+    "paths": {
+      "@/*": ["./src/*"]
+    }
+>>>>>>> d1a22c5 (Fix build: correct Navigation import, add @ alias to tsconfig, fix useScrollAnimation hook, rename analytics.tsx)
   },
   "include": [
     "next-env.d.ts",

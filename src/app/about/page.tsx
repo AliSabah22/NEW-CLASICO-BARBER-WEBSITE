@@ -83,7 +83,7 @@ export default function AboutPage() {
               Our Story
             </h2>
             <p className="text-xl text-black/70 max-w-4xl mx-auto leading-relaxed">
-              Founded in 2010, Clasico Barbershop has been the premier destination for men's grooming in our community. 
+              Founded in 2022, Clasico Barbershop has been the premier destination for men's grooming in our community. 
               We blend traditional barbering techniques with modern luxury to create an experience that goes beyond just a haircut.
             </p>
           </motion.div>
