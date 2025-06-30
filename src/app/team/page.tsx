@@ -1,10 +1,6 @@
 "use client";
 
-<<<<<<< HEAD
-import { Navigation } from "@/components/layout/navigation";
-=======
 import Navigation from "@/components/layout/navigation";
->>>>>>> d1a22c5 (Fix build: correct Navigation import, add @ alias to tsconfig, fix useScrollAnimation hook, rename analytics.tsx)
 import { motion } from "framer-motion";
 
 const team = [

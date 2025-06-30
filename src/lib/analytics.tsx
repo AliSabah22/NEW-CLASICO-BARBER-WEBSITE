@@ -1,13 +1,7 @@
-<<<<<<< HEAD
 import React from 'react'
 import Script from 'next/script'
 
-export const GoogleAnalytics: React.FC = () => {
-=======
-import Script from 'next/script'
-
 export const GoogleAnalytics = () => {
->>>>>>> d1a22c5 (Fix build: correct Navigation import, add @ alias to tsconfig, fix useScrollAnimation hook, rename analytics.tsx)
   return (
     <>
       <Script
