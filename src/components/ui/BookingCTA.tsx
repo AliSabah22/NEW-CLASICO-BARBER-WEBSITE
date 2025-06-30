@@ -2,38 +2,21 @@
 
 import { useCallback } from "react";
 import { motion } from "framer-motion";
-<<<<<<< HEAD
-import { scrollToSection } from "../../utils/scroll";
-=======
->>>>>>> d1a22c5 (Fix build: correct Navigation import, add @ alias to tsconfig, fix useScrollAnimation hook, rename analytics.tsx)
 
 interface BookingCTAProps {
   variant?: "primary" | "secondary";
   size?: "sm" | "md" | "lg";
   className?: string;
-<<<<<<< HEAD
-  targetSection?: string;
-=======
->>>>>>> d1a22c5 (Fix build: correct Navigation import, add @ alias to tsconfig, fix useScrollAnimation hook, rename analytics.tsx)
 }
 
 export default function BookingCTA({
   variant = "primary",
   size = "md",
-<<<<<<< HEAD
-  className = "",
-  targetSection = "booking"
-}: BookingCTAProps) {
-  const handleClick = useCallback(() => {
-    scrollToSection(targetSection);
-  }, [targetSection]);
-=======
   className = ""
 }: BookingCTAProps) {
   const handleClick = useCallback(() => {
     window.open('https://booking.cojilio.com/clasicobarbershop', '_blank');
   }, []);
->>>>>>> d1a22c5 (Fix build: correct Navigation import, add @ alias to tsconfig, fix useScrollAnimation hook, rename analytics.tsx)
 
   return (
     <motion.button

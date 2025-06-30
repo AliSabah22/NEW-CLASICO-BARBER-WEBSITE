@@ -19,13 +19,10 @@ const navigation: NavigationItem[] = [
 const Navigation = () => {
   const [isOpen, setIsOpen] = React.useState(false);
 
-<<<<<<< HEAD
-=======
   const handleBookNow = () => {
     window.open('https://booking.cojilio.com/clasicobarbershop', '_blank');
   };
 
->>>>>>> d1a22c5 (Fix build: correct Navigation import, add @ alias to tsconfig, fix useScrollAnimation hook, rename analytics.tsx)
   return (
     <header className="fixed top-0 z-50 w-full bg-white/80 backdrop-blur-sm">
       <nav className="mx-auto flex max-w-7xl items-center justify-between p-6 lg:px-8">
@@ -51,10 +48,7 @@ const Navigation = () => {
         <div className="hidden lg:flex lg:flex-1 lg:justify-end">
           <button 
             type="button"
-<<<<<<< HEAD
-=======
             onClick={handleBookNow}
->>>>>>> d1a22c5 (Fix build: correct Navigation import, add @ alias to tsconfig, fix useScrollAnimation hook, rename analytics.tsx)
             className="rounded-md bg-gold px-4 py-2 text-sm font-medium text-black hover:bg-gold/90"
           >
             Book Now
@@ -130,10 +124,7 @@ const Navigation = () => {
                 ))}
                 <button 
                   type="button"
-<<<<<<< HEAD
-=======
                   onClick={handleBookNow}
->>>>>>> d1a22c5 (Fix build: correct Navigation import, add @ alias to tsconfig, fix useScrollAnimation hook, rename analytics.tsx)
                   className="mt-4 rounded-md bg-gold px-4 py-2 text-sm font-medium text-black hover:bg-gold/90"
                 >
                   Book Now
