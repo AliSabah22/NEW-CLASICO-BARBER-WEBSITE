@@ -160,7 +160,7 @@ export default function Services() {
               >
                 <div className={`relative ${styles.card} backdrop-blur-xl rounded-2xl md:rounded-3xl p-6 md:p-8 pt-12 md:pt-16 border transition-all duration-500 h-full shadow-2xl hover:shadow-3xl`}>
                   {/* Service Icon - Mobile optimized positioning */}
-                  <div className="absolute -top-12 md:-top-16 left-1/2 transform -translate-x-1/2 -z-10">
+                  <div className="absolute -top-20 md:-top-28 left-1/2 transform -translate-x-1/2 z-10">
                     <OptimizedImage
                       src={service.image}
                       alt={service.name}
