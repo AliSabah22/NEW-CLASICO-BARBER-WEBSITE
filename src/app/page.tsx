@@ -4,7 +4,7 @@ import React from "react";
 import { Button } from "../components/ui/button";
 import { motion } from "framer-motion";
 import Image from "next/image";
-import Navigation from "@/components/layout/navigation";
+import Navigation from "../components/Navigation";
 import Services from "../components/sections/Services";
 import SignatureExperience from "../components/SignatureExperience";
 import Testimonials from "../components/sections/Testimonials";

@@ -1,6 +1,6 @@
 "use client";
 import React from "react";
-import Navigation from "@/components/layout/navigation";
+import Navigation from "../../components/Navigation";
 
 import { motion } from "framer-motion";
 import Image from "next/image";
