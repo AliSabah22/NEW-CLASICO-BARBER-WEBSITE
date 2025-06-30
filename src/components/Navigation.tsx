@@ -20,7 +20,7 @@ export default function Navigation() {
   }, []);
 
   const handleBookNow = () => {
-    scrollToSection('booking');
+    window.open('https://booking.cojilio.com/clasicobarbershop', '_blank');
   };
 
   return (

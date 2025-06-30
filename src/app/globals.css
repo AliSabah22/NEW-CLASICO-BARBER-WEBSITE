@@ -34,7 +34,7 @@
   }
 
   .btn-primary {
-    @apply bg-accent text-white px-6 py-3 rounded-md font-medium transition-all duration-300 hover:bg-accent-dark shadow-lg hover:shadow-xl;
+    @apply bg-gold text-white px-6 py-3 rounded-md font-medium transition-all duration-300 hover:bg-gold/80 shadow-lg hover:shadow-xl;
   }
 
   .btn-secondary {
