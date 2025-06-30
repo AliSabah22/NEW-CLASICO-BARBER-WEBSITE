@@ -66,13 +66,10 @@ export default function Services() {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
 
-<<<<<<< HEAD
-=======
   const handleBookNow = () => {
     window.open('https://booking.cojilio.com/clasicobarbershop', '_blank');
   };
 
->>>>>>> d1a22c5 (Fix build: correct Navigation import, add @ alias to tsconfig, fix useScrollAnimation hook, rename analytics.tsx)
   return (
     <section id="services" className="section-padding bg-white">
       <div className="container-custom">
@@ -115,11 +112,7 @@ export default function Services() {
               <p className="text-gray-600 mb-4">{service.description}</p>
               <div className="flex items-center justify-between">
                 <span className="text-accent font-medium">{service.price}</span>
-<<<<<<< HEAD
-                <button className="text-primary hover:text-accent transition-colors duration-300">
-=======
                 <button className="text-primary hover:text-accent transition-colors duration-300" onClick={handleBookNow}>
->>>>>>> d1a22c5 (Fix build: correct Navigation import, add @ alias to tsconfig, fix useScrollAnimation hook, rename analytics.tsx)
                   Book Now →
                 </button>
               </div>
