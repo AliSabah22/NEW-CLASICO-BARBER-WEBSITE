@@ -1,7 +1,7 @@
 "use client";
-
-import Navigation from "../../components/Navigation";
-import { Button } from "../../components/ui/button";
+import React from "react";
+import Navigation from "@/components/layout/navigation";
+import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
 
 export default function ContactPage() {

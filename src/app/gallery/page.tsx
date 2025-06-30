@@ -1,6 +1,7 @@
 "use client";
-import Navigation from "../../components/Navigation";
-import Footer from "../../components/sections/Footer";
+import React from "react";
+import Navigation from "@/components/layout/navigation";
+import Footer from "@/components/sections/Footer";
 import { motion } from "framer-motion";
 import Image from "next/image";
 
