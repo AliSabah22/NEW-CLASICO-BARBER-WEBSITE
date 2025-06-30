@@ -1,85 +1,121 @@
 # Clasico Barbershop Website
 
-A modern, luxurious website for Clasico Barbershop, featuring a premium design inspired by elite private clubs and high-end fashion brands.
+A modern, responsive barbershop website built with Next.js, featuring luxury grooming services and a premium user experience.
 
-## Features
+## 🚀 Features
 
-- 🎨 Premium design with black, white, and gold color scheme
-- 📱 Mobile-first, responsive layout
-- ✨ Smooth animations and transitions using Framer Motion
-- 📅 Integrated booking system
-- 🎥 Shortform content gallery
-- ⭐ Testimonials carousel
-- 📍 Location integration with Google Maps
-- 💳 Future payment integration ready
+- **Responsive Design**: Optimized for all devices (mobile, tablet, desktop)
+- **Modern UI**: Clean, luxury design with gold accents
+- **Fast Performance**: Optimized images and code splitting
+- **SEO Optimized**: Meta tags, structured data, and sitemap
+- **Mobile-First**: Touch-friendly navigation and interactions
+- **Booking Integration**: Direct integration with Cojilio booking system
 
-## Tech Stack
+## 🛠️ Tech Stack
 
-- Next.js 14
-- TypeScript
-- Tailwind CSS
-- Framer Motion
-- GSAP (for advanced animations)
-- Calendly/Booksy (for booking)
-- Google Maps API
+- **Framework**: Next.js 14.1.0
+- **Language**: TypeScript
+- **Styling**: Tailwind CSS
+- **Animations**: Framer Motion
+- **Icons**: Lucide React
+- **Deployment**: Railway
 
-## Getting Started
+## 📦 Services Offered
 
-1. Clone the repository:
+### Premium Packages
+- **Silver Experience**: $45 - Classic precision haircut with hot towel treatment
+- **Gold Experience**: $75 - Premium haircut with beard trim and luxury products
+- **Platinum Experience**: $120 - Ultimate luxury experience with full grooming
+
+### Additional Services
+- Beard Sculpting
+- Hot Towel Shave
+- Scalp Treatment
+- Hair Coloring
+- Style Consultation
+- Product Application
+
+## 🚀 Railway Deployment
+
+This project is configured for easy deployment on Railway:
+
+### Prerequisites
+- Railway account
+- GitHub repository access
+
+### Deployment Steps
+
+1. **Connect to Railway**
+   - Go to [railway.app](https://railway.app)
+   - Sign up/Login with GitHub
+   - Click "New Project"
+
+2. **Deploy from GitHub**
+   - Select "Deploy from GitHub repo"
+   - Choose your repository: `NEW-CLASICO-BARBER-WEBSITE`
+   - Railway will automatically detect it's a Next.js project
+
+3. **Automatic Configuration**
+   - Railway will use the scripts in `package.json`
+   - Build Command: `yarn build`
+   - Start Command: `yarn start`
+   - Port: Automatically detected (3000)
+
+4. **Environment Variables** (if needed)
+   - Add any environment variables in Railway dashboard
+   - For now, the app works without additional variables
+
+### Configuration Files
+
+- `railway.json`: Railway-specific configuration
+- `.nvmrc`: Node.js version specification
+- `package.json`: Dependencies and scripts
+- `next.config.js`: Next.js configuration with standalone output
+- `Dockerfile`: Production-ready Docker configuration
+
+## 🏃‍♂️ Local Development
+
 ```bash
-git clone https://github.com/yourusername/clasico-barbershop.git
+# Install dependencies
+yarn install
+
+# Run development server
+yarn dev
+
+# Build for production
+yarn build
+
+# Start production server
+yarn start
 ```
 
-2. Install dependencies:
-```bash
-npm install
-```
+## 📱 Mobile Optimization
 
-3. Create a `.env.local` file in the root directory and add your environment variables:
-```env
-NEXT_PUBLIC_GOOGLE_MAPS_API_KEY=your_google_maps_api_key
-NEXT_PUBLIC_CALENDLY_LINK=your_calendly_link
-```
+The website is fully optimized for mobile devices:
+- Touch-friendly navigation
+- Responsive images and layouts
+- Fast loading times
+- PWA-ready configuration
+- Safe area support for notches
 
-4. Run the development server:
-```bash
-npm run dev
-```
+## 🎨 Design Features
 
-5. Open [http://localhost:3000](http://localhost:3000) in your browser.
+- **Luxury Aesthetic**: Gold and black color scheme
+- **Smooth Animations**: Framer Motion powered transitions
+- **Professional Typography**: Playfair Display and Inter fonts
+- **High-Quality Images**: Optimized for web performance
+- **Interactive Elements**: Hover effects and micro-interactions
 
-## Project Structure
+## 📞 Contact & Booking
 
-```
-src/
-├── app/              # Next.js app directory
-├── components/       # Reusable components
-├── lib/             # Utility functions and configurations
-├── types/           # TypeScript type definitions
-└── styles/          # Global styles and Tailwind config
-```
+- **Booking**: [Cojilio Booking System](https://booking.cojilio.com/clasicobarbershop)
+- **Services**: Premium grooming packages
+- **Location**: Mississauga, Ontario
 
-## Development
+## 📄 License
 
-- `npm run dev` - Start development server
-- `npm run build` - Build for production
-- `npm run start` - Start production server
-- `npm run lint` - Run ESLint
+MIT License - see LICENSE file for details.
 
-## Contributing
+---
 
-1. Fork the repository
-2. Create your feature branch (`git checkout -b feature/amazing-feature`)
-3. Commit your changes (`git commit -m 'Add some amazing feature'`)
-4. Push to the branch (`git push origin feature/amazing-feature`)
-5. Open a Pull Request
-
-## License
-
-This project is licensed under the MIT License - see the LICENSE file for details.
-
-## Contact
-
-Clasico Barbershop - [@clasicobarbershop](https://instagram.com/clasicobarbershop)
-
-Project Link: [https://github.com/yourusername/clasico-barbershop](https://github.com/yourusername/clasico-barbershop)
+Built with ❤️ for Clasico Barbershop
