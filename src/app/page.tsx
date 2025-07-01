@@ -5,7 +5,7 @@ import { Button } from "../components/ui/button";
 import { motion } from "framer-motion";
 import Image from "next/image";
 import Navigation from "../components/Navigation";
-import Services from "../components/sections/Services";
+import Services from "../components/Services";
 import SignatureExperience from "../components/SignatureExperience";
 import Testimonials from "../components/sections/Testimonials";
 import ContentGallery from "../components/ContentGallery";
@@ -40,7 +40,7 @@ export default function Home() {
       <Navigation />
       
       {/* Hero Section */}
-      <section className="relative h-screen flex overflow-hidden -mt-20">
+      <section className="relative h-screen flex overflow-hidden mt-20 md:mt-24">
         {/* Left Side - Content with Background Image */}
         <div className="w-1/2 relative flex items-center justify-center">
           <Image

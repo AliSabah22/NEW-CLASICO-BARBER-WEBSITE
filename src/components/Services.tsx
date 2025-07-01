@@ -39,13 +39,13 @@ export default function Services() {
   };
 
   return (
-    <section id="services" className="section-padding bg-white">
+    <section id="services" className="section-padding bg-black">
       <div className="container-custom">
         <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-4xl font-display mb-4">
+          <h2 className="text-3xl md:text-4xl font-display mb-4 text-gold">
             Our Services
           </h2>
-          <p className="text-gray-600 max-w-2xl mx-auto">
+          <p className="text-white/80 max-w-2xl mx-auto">
             Experience the art of grooming with our premium services, delivered by master barbers
           </p>
         </div>
@@ -54,18 +54,18 @@ export default function Services() {
           {services.map((service, index) => (
             <div
               key={index}
-              className="card group hover:scale-105 transition-transform duration-300"
+              className="bg-white/5 border-2 border-transparent hover:border-gold rounded-2xl shadow-xl p-8 flex flex-col items-center text-center transition-all duration-300 group"
             >
-              <div className="text-4xl mb-4">{service.icon}</div>
-              <h3 className="text-xl font-display mb-2">{service.title}</h3>
-              <p className="text-gray-600 mb-4">{service.description}</p>
-              <div className="flex items-center justify-between">
-                <span className="text-accent font-medium">{service.price}</span>
+              <div className="text-5xl mb-6 animate-fade-in group-hover:scale-110 transition-transform duration-300">{service.icon}</div>
+              <h3 className="text-2xl font-display mb-2 text-gold font-bold">{service.title}</h3>
+              <p className="text-white/80 mb-6 text-base font-medium min-h-[56px]">{service.description}</p>
+              <div className="flex items-center justify-between w-full mt-auto">
+                <span className="text-gold font-bold text-lg">{service.price}</span>
                 <button 
-                  className="text-primary hover:text-accent transition-colors duration-300" 
+                  className="ml-auto btn-primary px-6 py-2 text-base font-semibold rounded-lg shadow hover:bg-gold/90 transition-colors duration-300"
                   onClick={handleBookNow}
                 >
-                  Book Now →
+                  Book Now
                 </button>
               </div>
             </div>
