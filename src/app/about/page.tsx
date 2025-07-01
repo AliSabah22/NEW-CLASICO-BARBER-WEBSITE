@@ -1,6 +1,7 @@
 import React from "react";
 import Image from "next/image";
 import { Clock, MapPin, Phone, Star } from "lucide-react";
+import Footer from "../../components/Footer";
 
 export default function AboutPage() {
   const teamMembers = [
@@ -210,6 +211,8 @@ export default function AboutPage() {
           </div>
         </div>
       </section>
+      
+      <Footer />
     </>
   );
 } 

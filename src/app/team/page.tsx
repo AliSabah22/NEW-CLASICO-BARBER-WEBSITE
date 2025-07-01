@@ -4,7 +4,7 @@ import React from "react";
 import Image from "next/image";
 import { Star } from "lucide-react";
 import Navigation from "../../components/Navigation";
-import Footer from "@/components/sections/Footer";
+import Footer from "@/components/Footer";
 
 export default function TeamPage() {
   const teamMembers = [

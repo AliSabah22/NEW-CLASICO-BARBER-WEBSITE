@@ -9,7 +9,7 @@ import Services from "../components/sections/Services";
 import SignatureExperience from "../components/SignatureExperience";
 import Testimonials from "../components/sections/Testimonials";
 import ContentGallery from "../components/ContentGallery";
-import Footer from "../components/sections/Footer";
+import Footer from "../components/Footer";
 import Gallery from '../components/sections/Gallery';
 import dynamic from 'next/dynamic';
 import LoadingState from '../components/ui/LoadingState'

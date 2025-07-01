@@ -1,6 +1,5 @@
 import './globals.css';
 import Navigation from '@/components/Navigation';
-import Footer from '@/components/Footer';
 import React from 'react';
 
 export default function RootLayout({
@@ -19,7 +18,6 @@ export default function RootLayout({
         <main className="min-h-screen">
           {children}
         </main>
-        <Footer />
       </body>
     </html>
   );
