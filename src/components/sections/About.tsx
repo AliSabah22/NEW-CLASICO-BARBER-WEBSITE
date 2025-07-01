@@ -1,7 +1,5 @@
 "use client";
 
-import { motion } from "framer-motion";
-import { useInView } from "framer-motion";
 import { useRef } from "react";
 import Image from "next/image";
 
@@ -28,37 +26,12 @@ const teamMembers = [
 
 export default function About() {
   const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, margin: "-100px" });
-
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.2,
-      },
-    },
-  };
-
-  const itemVariants = {
-    hidden: { opacity: 0, y: 20 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: {
-        duration: 0.6,
-      },
-    },
-  };
 
   return (
     <section id="about" className="section-padding bg-black">
       <div className="container-custom">
-        <motion.div
+        <div
           ref={ref}
-          initial={{ opacity: 0, y: 20 }}
-          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-          transition={{ duration: 0.8 }}
           className="text-center mb-12"
         >
           <h2 className="text-3xl md:text-4xl font-display mb-4 text-white">
@@ -68,20 +41,13 @@ export default function About() {
             Founded in 2010, Clasico Barbershop has been providing exceptional grooming
             services with a focus on quality, tradition, and customer satisfaction.
           </p>
-        </motion.div>
+        </div>
 
-        <motion.div
-          variants={containerVariants}
-          initial="hidden"
-          animate={isInView ? "visible" : "hidden"}
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
-        >
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {teamMembers.map((member) => (
-            <motion.div
+            <div
               key={member.name}
-              variants={itemVariants}
-              whileHover={{ y: -10 }}
-              className="bg-white/5 rounded-xl p-6 text-center"
+              className="bg-white/5 rounded-xl p-6 text-center hover:bg-white/10 transition-colors duration-300"
             >
               <div className="relative w-48 h-48 mx-auto mb-6 rounded-full overflow-hidden">
                 <Image
@@ -94,9 +60,9 @@ export default function About() {
               <h3 className="text-xl font-display text-white mb-2">{member.name}</h3>
               <p className="text-gold mb-4">{member.role}</p>
               <p className="text-white/70">{member.bio}</p>
-            </motion.div>
+            </div>
           ))}
-        </motion.div>
+        </div>
       </div>
     </section>
   );

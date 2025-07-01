@@ -2,8 +2,6 @@
 
 import { useState } from 'react';
 import Image from 'next/image';
-import { motion, AnimatePresence } from 'framer-motion';
-import LoadingSpinner from './LoadingSpinner';
 
 interface LuxuryImageProps {
   src: string;
@@ -29,17 +27,11 @@ export default function LuxuryImage({
 
   return (
     <div className={`relative overflow-hidden ${className}`}>
-      <AnimatePresence>
         {isLoading && (
-          <motion.div
-            initial={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            className="absolute inset-0 flex items-center justify-center bg-black/20 backdrop-blur-sm"
-          >
-            <LoadingSpinner size="lg" color="accent" />
-          </motion.div>
+        <div className="absolute inset-0 flex items-center justify-center bg-black/20 backdrop-blur-sm">
+          <div className="w-8 h-8 border-4 border-accent border-t-transparent rounded-full animate-spin"></div>
+        </div>
         )}
-      </AnimatePresence>
 
       {isError ? (
         <div className="absolute inset-0 flex items-center justify-center bg-black/20">
@@ -56,7 +48,7 @@ export default function LuxuryImage({
             ${isLoading ? 'opacity-0' : 'opacity-100'}
             ${className}
           `}
-          onLoadingComplete={() => setIsLoading(false)}
+          onLoad={() => setIsLoading(false)}
           onError={() => {
             setIsLoading(false);
             setIsError(true);

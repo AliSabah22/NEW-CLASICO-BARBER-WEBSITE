@@ -1,19 +1,6 @@
 // Development optimizations to speed up builds
 export const isDevelopment = process.env.NODE_ENV === 'development';
 
-// Lazy load framer-motion in development
-export const lazyMotion = {
-  motion: isDevelopment 
-    ? () => import('framer-motion').then(mod => ({ default: mod.motion }))
-    : () => import('framer-motion').then(mod => ({ default: mod.motion })),
-  useInView: isDevelopment
-    ? () => import('framer-motion').then(mod => ({ default: mod.useInView }))
-    : () => import('framer-motion').then(mod => ({ default: mod.useInView })),
-  AnimatePresence: isDevelopment
-    ? () => import('framer-motion').then(mod => ({ default: mod.AnimatePresence }))
-    : () => import('framer-motion').then(mod => ({ default: mod.AnimatePresence })),
-};
-
 // Disable expensive features in development
 export const developmentConfig = {
   disableAnimations: isDevelopment,

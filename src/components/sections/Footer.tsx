@@ -1,17 +1,16 @@
 "use client";
 
-import { motion } from 'framer-motion';
-import { useState } from 'react';
+import React, { useState } from 'react';
 import Image from 'next/image';
 import PrimaryButton from '../ui/PrimaryButton';
 import InstagramIcon from '../icons/InstagramIcon';
-import FacebookIcon from '../icons/FacebookIcon';
-import TwitterIcon from '../icons/TwitterIcon';
+import GoogleBusinessIcon from '../icons/FacebookIcon';
+import TikTokIcon from '../icons/TwitterIcon';
 
 const socialLinks = [
-  { name: 'Instagram', url: 'https://instagram.com/clasico', icon: '/icons/instagram.svg' },
-  { name: 'Facebook', url: 'https://facebook.com/clasico', icon: '/icons/facebook.svg' },
-  { name: 'Twitter', url: 'https://twitter.com/clasico', icon: '/icons/twitter.svg' },
+  { name: 'Instagram', url: 'https://instagram.com/clasicobarbershop105', icon: '/icons/instagram.svg' },
+  { name: 'Google Business', url: 'https://maps.app.goo.gl/your-google-business-link', icon: '/icons/google-business.svg' },
+  { name: 'TikTok', url: 'https://tiktok.com/@clasicobarbershop105', icon: '/icons/tiktok.svg' },
 ];
 
 export default function Footer() {
@@ -69,13 +68,9 @@ export default function Footer() {
                 </PrimaryButton>
               </div>
               {isSubscribed && (
-                <motion.p
-                  initial={{ opacity: 0, y: 10 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  className="text-accent mt-4"
-                >
+                <p className="text-accent mt-4">
                   Thank you for subscribing!
-                </motion.p>
+                </p>
               )}
             </form>
 
@@ -87,24 +82,27 @@ export default function Footer() {
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-gold hover:text-gold/80 transition-colors duration-300"
+                  aria-label="Follow us on Instagram"
                 >
                   <InstagramIcon className="w-6 h-6" />
                 </a>
                 <a
-                  href="https://facebook.com/clasico"
+                  href="https://maps.app.goo.gl/your-google-business-link"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-gold hover:text-gold/80 transition-colors duration-300"
+                  aria-label="Visit our Google Business Profile"
                 >
-                  <FacebookIcon className="w-6 h-6" />
+                  <GoogleBusinessIcon className="w-6 h-6" />
                 </a>
                 <a
-                  href="https://twitter.com/clasico"
+                  href="https://tiktok.com/@clasicobarbershop105"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-gold hover:text-gold/80 transition-colors duration-300"
+                  aria-label="Follow us on TikTok"
                 >
-                  <TwitterIcon className="w-6 h-6" />
+                  <TikTokIcon className="w-6 h-6" />
                 </a>
               </div>
               <div className="space-y-4">

@@ -1,4 +1,5 @@
-import { motion } from 'framer-motion';
+"use client";
+
 import { useState } from 'react';
 import Image from 'next/image';
 
@@ -49,13 +50,11 @@ export default function ContentGallery() {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-          {videos.map((video) => (
-            <motion.div
+          {videos.map((video, idx) => (
+            <div
               key={video.id}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5 }}
-              className="relative aspect-[9/16] rounded-2xl overflow-hidden group cursor-pointer"
+              className="relative aspect-[9/16] rounded-2xl overflow-hidden group cursor-pointer animate-fade-in"
+              style={{ animationDelay: `${idx * 0.1}s` }}
               onClick={() => setActiveVideo(video.id)}
             >
               <Image
@@ -110,16 +109,13 @@ export default function ContentGallery() {
                   </svg>
                 </div>
               </div>
-            </motion.div>
+            </div>
           ))}
         </div>
 
         {/* Video Modal */}
         {activeVideo && (
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
+          <div
             className="fixed inset-0 bg-black/90 z-50 flex items-center justify-center p-4"
             onClick={() => setActiveVideo(null)}
           >
@@ -144,7 +140,7 @@ export default function ContentGallery() {
                 <p className="text-white">Video Player Placeholder</p>
               </div>
             </div>
-          </motion.div>
+          </div>
         )}
       </div>
     </section>

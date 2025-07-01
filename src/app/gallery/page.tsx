@@ -2,75 +2,50 @@
 import React from "react";
 import Navigation from "../../components/Navigation";
 import Footer from "@/components/sections/Footer";
-import { motion } from "framer-motion";
 import Image from "next/image";
 
-const galleryImages = [
-  "/images/gallery1.jpg",
-  "/images/gallery2.jpg",
-  "/images/gallery3.jpg",
-  "/images/gallery4.jpg",
-  "/images/gallery5.jpg",
-  "/images/gallery6.jpg",
-];
-
 export default function GalleryPage() {
+  const galleryImages = [
+    "/images/gallary_photos/469224525_17889610338110577_2569995278072668272_n.jpg",
+    "/images/gallary_photos/474389932_17895039927110577_1959066183506360602_n.jpg",
+    "/images/gallary_photos/491445309_17906499714110577_8094427299739655103_n.jpeg",
+    "/images/gallary_photos/496139148_17908424976110577_6263820544994684137_n.jpeg",
+    "/images/gallary_photos/DSC03191.jpg",
+    "/images/gallary_photos/DSC03992.jpg",
+  ];
+
   return (
-    <>
-      <Navigation />
-      <section className="relative h-[60vh] flex items-center justify-center overflow-hidden -mt-20">
-        <Image
-          src="/images/gallery-hero.jpg"
-          alt="Barbershop gallery"
-          fill
-          className="object-cover"
-          priority
-          quality={90}
-          sizes="100vw"
-        />
-        <div className="absolute inset-0 bg-black/60" />
-        <div className="container-custom relative z-10 text-center">
-          <motion.h1
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            className="text-4xl md:text-6xl font-display text-white mb-4"
-          >
-            Gallery
-          </motion.h1>
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
-            className="text-lg md:text-xl text-white/90 max-w-2xl mx-auto"
-          >
-            Explore our space, our work, and our story in pictures.
-          </motion.p>
+    <main className="min-h-screen bg-white">
+      <div className="pt-24 pb-16">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <h1 className="font-serif text-4xl md:text-5xl font-bold mb-4 animate-fade-in">
+              Our Gallery
+            </h1>
+            <p className="text-lg text-gray-600 max-w-2xl mx-auto animate-fade-in">
+              Take a look at our work and the amazing transformations we create
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {galleryImages.map((image, index) => (
+              <div
+                key={index}
+                className="relative aspect-square rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300 animate-fade-in"
+                style={{ animationDelay: `${index * 0.1}s` }}
+              >
+                <Image
+                  src={image}
+                  alt={`Gallery image ${index + 1}`}
+                  fill
+                  className="object-cover hover:scale-105 transition-transform duration-300"
+                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                />
+              </div>
+            ))}
+          </div>
         </div>
-      </section>
-      <section className="container-custom py-16">
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
-          {galleryImages.map((src, idx) => (
-            <motion.div
-              key={src}
-              initial={{ opacity: 0, scale: 0.95 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: idx * 0.1 }}
-              className="overflow-hidden rounded-xl shadow-lg"
-            >
-              <Image
-                src={src}
-                alt={`Gallery image ${idx + 1}`}
-                width={600}
-                height={400}
-                className="object-cover w-full h-64 hover:scale-105 transition-transform duration-300"
-              />
-            </motion.div>
-          ))}
-        </div>
-      </section>
-      <Footer />
-    </>
+      </div>
+    </main>
   );
 } 

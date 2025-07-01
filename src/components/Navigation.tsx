@@ -2,9 +2,8 @@
 
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
-import { motion, AnimatePresence } from 'framer-motion';
 import Image from 'next/image';
-import { scrollToSection } from '../utils/scroll';
+
 
 export default function Navigation() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -114,62 +113,57 @@ export default function Navigation() {
         </div>
       </div>
 
-      {/* Mobile Menu - Enhanced */}
-      <AnimatePresence>
-        {isMobileMenuOpen && (
-          <motion.div
-            initial={{ opacity: 0, height: 0 }}
-            animate={{ opacity: 1, height: 'auto' }}
-            exit={{ opacity: 0, height: 0 }}
-            className="md:hidden bg-black/98 backdrop-blur-md border-t border-gold/20"
-          >
-            <div className="container-custom py-6 space-y-6">
-              <div className="grid grid-cols-1 gap-4">
-                <Link
-                  href="/services"
-                  className="block text-gold hover:text-gold/80 transition-colors text-lg font-medium py-3 px-4 rounded-lg hover:bg-white/5 touch-manipulation"
-                  onClick={() => setIsMobileMenuOpen(false)}
-                >
-                  Services
-                </Link>
-                <Link
-                  href="/gallery"
-                  className="block text-gold hover:text-gold/80 transition-colors text-lg font-medium py-3 px-4 rounded-lg hover:bg-white/5 touch-manipulation"
-                  onClick={() => setIsMobileMenuOpen(false)}
-                >
-                  Gallery
-                </Link>
-                <Link
-                  href="/about"
-                  className="block text-gold hover:text-gold/80 transition-colors text-lg font-medium py-3 px-4 rounded-lg hover:bg-white/5 touch-manipulation"
-                  onClick={() => setIsMobileMenuOpen(false)}
-                >
-                  About
-                </Link>
-                <Link
-                  href="/contact"
-                  className="block text-gold hover:text-gold/80 transition-colors text-lg font-medium py-3 px-4 rounded-lg hover:bg-white/5 touch-manipulation"
-                  onClick={() => setIsMobileMenuOpen(false)}
-                >
-                  Contact
-                </Link>
-              </div>
-              
-              <div className="pt-4 border-t border-gold/20">
-                <button 
-                  onClick={() => {
-                    handleBookNow();
-                    setIsMobileMenuOpen(false);
-                  }}
-                  className="w-full bg-white text-black hover:bg-gold hover:text-white px-6 py-4 rounded-lg font-semibold shadow-gold transition-all touch-manipulation text-lg"
-                >
-                  Book Now
-                </button>
-              </div>
-            </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
+      {/* Mobile Menu - Enhanced with CSS transitions */}
+      <div 
+        className={`md:hidden bg-black/98 backdrop-blur-md border-t border-gold/20 overflow-hidden transition-all duration-300 ease-in-out ${
+          isMobileMenuOpen ? 'max-h-screen opacity-100' : 'max-h-0 opacity-0'
+        }`}
+      >
+        <div className="container-custom py-6 space-y-6">
+          <div className="grid grid-cols-1 gap-4">
+            <Link
+              href="/services"
+              className="block text-gold hover:text-gold/80 transition-colors text-lg font-medium py-3 px-4 rounded-lg hover:bg-white/5 touch-manipulation"
+              onClick={() => setIsMobileMenuOpen(false)}
+            >
+              Services
+            </Link>
+            <Link
+              href="/gallery"
+              className="block text-gold hover:text-gold/80 transition-colors text-lg font-medium py-3 px-4 rounded-lg hover:bg-white/5 touch-manipulation"
+              onClick={() => setIsMobileMenuOpen(false)}
+            >
+              Gallery
+            </Link>
+            <Link
+              href="/about"
+              className="block text-gold hover:text-gold/80 transition-colors text-lg font-medium py-3 px-4 rounded-lg hover:bg-white/5 touch-manipulation"
+              onClick={() => setIsMobileMenuOpen(false)}
+            >
+              About
+            </Link>
+            <Link
+              href="/contact"
+              className="block text-gold hover:text-gold/80 transition-colors text-lg font-medium py-3 px-4 rounded-lg hover:bg-white/5 touch-manipulation"
+              onClick={() => setIsMobileMenuOpen(false)}
+            >
+              Contact
+            </Link>
+          </div>
+          
+          <div className="pt-4 border-t border-gold/20">
+            <button 
+              onClick={() => {
+                handleBookNow();
+                setIsMobileMenuOpen(false);
+              }}
+              className="w-full bg-white text-black hover:bg-gold hover:text-white px-6 py-4 rounded-lg font-semibold shadow-gold transition-all touch-manipulation text-lg"
+            >
+              Book Now
+            </button>
+          </div>
+        </div>
+      </div>
     </nav>
   );
-} 
+}

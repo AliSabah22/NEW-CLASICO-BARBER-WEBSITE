@@ -1,120 +1,87 @@
-'use client';
+"use client";
 
-import { motion } from "framer-motion";
-import { useInView } from "framer-motion";
-import { useRef } from "react";
-import Image from "next/image";
+import React from 'react';
+import Image from 'next/image';
 
 const galleryImages = [
-  "/images/gallery1.jpg",
-  "/images/gallery2.jpg",
-  "/images/gallery3.jpg",
-  "/images/gallery4.jpg",
-  "/images/gallery5.jpg",
-  "/images/gallery6.jpg",
+  {
+    src: '/images/gallary_photos/DSC03191.jpg',
+    alt: 'Barbershop work 1',
+    title: 'Classic Cut'
+  },
+  {
+    src: '/images/gallary_photos/DSC03992.jpg',
+    alt: 'Barbershop work 2',
+    title: 'Modern Style'
+  },
+  {
+    src: '/images/gallary_photos/469224525_17889610338110577_2569995278072668272_n.jpg',
+    alt: 'Barbershop work 3',
+    title: 'Premium Service'
+  },
+  {
+    src: '/images/gallary_photos/474389932_17895039927110577_1959066183506360602_n.jpg',
+    alt: 'Barbershop work 4',
+    title: 'Expert Craftsmanship'
+  },
+  {
+    src: '/images/gallary_photos/491445309_17906499714110577_8094427299739655103_n.jpeg',
+    alt: 'Barbershop work 5',
+    title: 'Luxury Experience'
+  },
+  {
+    src: '/images/gallary_photos/496139148_17908424976110577_6263820544994684137_n.jpeg',
+    alt: 'Barbershop work 6',
+    title: 'Professional Finish'
+  }
 ];
 
 export default function Gallery() {
-  const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, margin: "-100px" });
-
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.1,
-      },
-    },
-  };
-
-  const itemVariants = {
-    hidden: { opacity: 0, scale: 0.8 },
-    visible: {
-      opacity: 1,
-      scale: 1,
-      transition: {
-        duration: 0.5,
-      },
-    },
-  };
-
   return (
-    <section id="gallery" className="py-16 sm:py-20 md:py-24 bg-black">
+    <section className="py-20 bg-black">
       <div className="container-custom">
-        <motion.div
-          ref={ref}
-          initial={{ opacity: 0, y: 20 }}
-          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-          transition={{ duration: 0.8 }}
-          className="text-center mb-12 md:mb-16"
-        >
-          <h2 className="text-2xl sm:text-3xl md:text-4xl font-display mb-4 md:mb-6 text-white">
-            Our Gallery
+        <div className="text-center mb-16">
+          <h2 className="text-4xl md:text-5xl lg:text-6xl font-display text-gold mb-6">
+            Our Work
           </h2>
-          <p className="text-white/80 max-w-2xl mx-auto text-sm sm:text-base md:text-lg px-4 md:px-0">
-            Take a look at our work and the atmosphere of our barbershop.
+          <p className="text-xl text-white/80 max-w-2xl mx-auto">
+            Discover the artistry and precision that defines our signature cuts and styles.
           </p>
-        </motion.div>
+        </div>
 
-        <motion.div
-          variants={containerVariants}
-          initial="hidden"
-          animate={isInView ? "visible" : "hidden"}
-          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 md:gap-8"
-        >
-          {galleryImages.map((src, index) => (
-            <motion.div
-              key={src}
-              variants={itemVariants}
-              whileHover={{ scale: 1.02 }}
-              whileTap={{ scale: 0.98 }}
-              className="relative aspect-square rounded-lg sm:rounded-xl overflow-hidden shadow-lg cursor-pointer touch-manipulation group"
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {galleryImages.map((image, index) => (
+            <div
+              key={index}
+              className="group relative overflow-hidden rounded-lg bg-white/5 hover:bg-white/10 transition-all duration-300"
             >
-              <Image
-                src={src}
-                alt={`Gallery image ${index + 1}`}
-                fill
-                sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                className="object-cover transition-transform duration-300 group-hover:scale-105"
-                priority={index < 3} // Prioritize first 3 images
-              />
-              <div className="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-              
-              {/* Mobile overlay for better touch feedback */}
-              <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-              
-              {/* Image number indicator */}
-              <div className="absolute top-3 right-3 bg-black/50 text-white text-xs px-2 py-1 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                {index + 1}
+              <div className="aspect-square relative">
+                <Image
+                  src={image.src}
+                  alt={image.alt}
+                  fill
+                  className="object-cover transition-transform duration-500 group-hover:scale-110"
+                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                />
+                <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                  <div className="text-center text-white">
+                    <h3 className="text-xl font-semibold mb-2">{image.title}</h3>
+                    <p className="text-sm text-white/80">Premium Quality</p>
+                  </div>
+                </div>
               </div>
-            </motion.div>
+            </div>
           ))}
-        </motion.div>
+        </div>
 
-        {/* Mobile-optimized CTA */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.4 }}
-          viewport={{ once: true }}
-          className="text-center mt-12 md:mt-16"
-        >
-          <div className="bg-white/5 backdrop-blur-sm rounded-2xl p-6 md:p-8 border border-white/10 max-w-2xl mx-auto">
-            <h3 className="text-xl md:text-2xl font-display text-white mb-4">
-              See More of Our Work
-            </h3>
-            <p className="text-white/70 text-sm md:text-base mb-6">
-              Visit our full gallery to see more examples of our craftsmanship
-            </p>
-            <button 
-              onClick={() => window.open('/gallery', '_blank')}
-              className="btn-primary w-full sm:w-auto touch-manipulation"
-            >
-              View Full Gallery
-            </button>
-          </div>
-        </motion.div>
+        <div className="text-center mt-16">
+          <button
+            onClick={() => window.open('/gallery', '_self')}
+            className="bg-gold text-black px-8 py-4 rounded-lg font-semibold hover:bg-gold/90 transition-colors duration-200 text-lg"
+          >
+            View Full Gallery
+          </button>
+        </div>
       </div>
     </section>
   );

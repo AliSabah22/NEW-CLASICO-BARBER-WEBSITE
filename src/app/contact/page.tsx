@@ -1,43 +1,22 @@
-"use client";
 import React from "react";
-import Navigation from "../../components/Navigation";
-import { Button } from "@/components/ui/button";
-import { motion } from "framer-motion";
 
 export default function ContactPage() {
   return (
     <main className="min-h-screen bg-white">
-      <Navigation />
-      
       <div className="pt-24 pb-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <motion.h1 
-              className="font-serif text-4xl md:text-5xl font-bold mb-4"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5 }}
-            >
+            <h1 className="font-serif text-4xl md:text-5xl font-bold mb-4 animate-fade-in">
               Contact Us
-            </motion.h1>
-            <motion.p 
-              className="text-lg text-gray-600 max-w-2xl mx-auto"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.1 }}
-            >
+            </h1>
+            <p className="text-lg text-gray-600 max-w-2xl mx-auto animate-fade-in">
               Get in touch with us to schedule your appointment or ask any questions
-            </motion.p>
+            </p>
           </div>
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
             {/* Contact Form */}
-            <motion.div
-              className="bg-white rounded-lg p-8 shadow-sm"
-              initial={{ opacity: 0, x: -20 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.5 }}
-            >
+            <div className="bg-white rounded-lg p-8 shadow-sm animate-slide-in">
               <form className="space-y-6">
                 <div>
                   <label htmlFor="name" className="block text-sm font-medium text-gray-700">
@@ -72,19 +51,14 @@ export default function ContactPage() {
                     className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-gold focus:ring-gold"
                   />
                 </div>
-                <Button variant="gold" className="w-full">
+                <button className="w-full bg-gold text-black hover:bg-gold-dark px-6 py-3 rounded-md font-semibold transition-colors">
                   Send Message
-                </Button>
+                </button>
               </form>
-            </motion.div>
+            </div>
 
             {/* Contact Information */}
-            <motion.div
-              className="space-y-8"
-              initial={{ opacity: 0, x: 20 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.5 }}
-            >
+            <div className="space-y-8 animate-slide-in">
               <div>
                 <h3 className="font-serif text-xl font-bold mb-4">Location</h3>
                 <p className="text-gray-600">
@@ -111,7 +85,7 @@ export default function ContactPage() {
               <div>
                 <h3 className="font-serif text-xl font-bold mb-4">Follow Us</h3>
                 <div className="flex space-x-4">
-                  <a href="#" className="text-gray-600 hover:text-gold">
+                  <a href="#" className="text-gray-600 hover:text-gold transition-colors">
                     <span className="sr-only">Instagram</span>
                     <svg className="h-6 w-6" fill="currentColor" viewBox="0 0 24 24">
                       <path
@@ -121,7 +95,7 @@ export default function ContactPage() {
                       />
                     </svg>
                   </a>
-                  <a href="#" className="text-gray-600 hover:text-gold">
+                  <a href="#" className="text-gray-600 hover:text-gold transition-colors">
                     <span className="sr-only">Facebook</span>
                     <svg className="h-6 w-6" fill="currentColor" viewBox="0 0 24 24">
                       <path
@@ -133,7 +107,7 @@ export default function ContactPage() {
                   </a>
                 </div>
               </div>
-            </motion.div>
+            </div>
           </div>
         </div>
       </div>
