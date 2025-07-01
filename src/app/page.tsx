@@ -39,13 +39,6 @@ export default function Home() {
     <>
       <Navigation />
       
-      {/* Test Image */}
-      <div className="mt-20 p-4 bg-gray-100">
-        <h2 className="text-2xl font-bold mb-4">Test Image Loading</h2>
-        <img src="/images/test-logo.png" alt="Test Logo" className="w-32 h-32 object-contain" />
-        <p className="mt-2 text-sm text-gray-600">If you can see this image, image loading is working correctly.</p>
-      </div>
-      
       {/* Hero Section */}
       <section className="relative h-screen flex overflow-hidden mt-20 md:mt-24">
         {/* Left Side - Content with Background Image */}
