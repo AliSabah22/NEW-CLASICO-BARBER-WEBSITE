@@ -99,7 +99,7 @@ export default function Home() {
             className="relative w-full max-w-sm"
           >
             <Image
-              src="/images/hero/Clasico brand.png"
+              src="/images/hero/clasico-brand.png"
               alt="Clasico Barbershop Brand"
               width={400}
               height={400}
