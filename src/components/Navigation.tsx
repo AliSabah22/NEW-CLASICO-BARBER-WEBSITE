@@ -55,7 +55,7 @@ export default function Navigation() {
           <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 flex items-center justify-center z-0">
             <Link href="/" className="touch-manipulation">
               <Image
-                src="/images/navbar/logo-gd-photoroom.png"
+                src="/images/logo.png"
                 alt="Clasico Barbershop Logo"
                 width={240}
                 height={240}
