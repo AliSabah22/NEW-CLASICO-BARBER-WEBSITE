@@ -39,6 +39,26 @@ export default function Home() {
     <>
       <Navigation />
       
+      {/* Debug Test */}
+      <div className="mt-20 p-4 bg-red-100 border-2 border-red-500">
+        <h2 className="text-2xl font-bold mb-4 text-red-800">DEBUG: Image Loading Test</h2>
+        <div className="space-y-4">
+          <div>
+            <p className="font-bold">Regular img tag:</p>
+            <img src="/images/test-simple.png" alt="Test Simple" className="w-32 h-32 border-2 border-blue-500" />
+          </div>
+          <div>
+            <p className="font-bold">Next.js Image component:</p>
+            <Image src="/images/logo.png" alt="Logo" width={128} height={128} className="border-2 border-green-500" />
+          </div>
+          <div>
+            <p className="font-bold">Hero background test:</p>
+            <img src="/images/hero-bg.jpg" alt="Hero BG" className="w-32 h-32 object-cover border-2 border-purple-500" />
+          </div>
+        </div>
+        <p className="mt-4 text-sm text-red-600">If you can see any of these images, image loading is working. If not, there's a deployment issue.</p>
+      </div>
+      
       {/* Hero Section */}
       <section className="relative h-screen flex overflow-hidden mt-20 md:mt-24">
         {/* Left Side - Content with Background Image */}
