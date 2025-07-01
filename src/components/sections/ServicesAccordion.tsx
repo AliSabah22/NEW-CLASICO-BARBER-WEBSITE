@@ -6,48 +6,82 @@ import clsx from "clsx";
 
 const services = [
   {
-    category: "Clasico Services",
+    category: "Hair & Beard",
     items: [
-      { name: "Clasico Haircut", price: "$35" },
-      { name: "Clasico Haircut & Beard", price: "$45" },
-      { name: "Clasico Haircut & Beard & Face Wax", price: "$55" },
-      { name: "Clasico Haircut & Beard & Face Wax & Threading", price: "$65" },
-      { name: "Clasico Haircut & Beard & Face Wax & Threading & Hair Color", price: "$75" },
-      { name: "Clasico Haircut & Beard & Face Wax & Threading & Hair Color & Hair Treatment", price: "$85" },
-      { name: "Clasico Haircut & Beard & Face Wax & Threading & Hair Color & Hair Treatment & Hair Styling", price: "$95" },
+      { name: "Haircut(Taper, Zero Fade, Skin Fade)", price: "$30" },
+      { name: "Senior haircut (+60)", price: "$24" },
+      { name: "Student haircut", price: "$28.49" },
+      { name: "Kids haircut (5 and under)", price: "$25" },
+      { name: "Kids haircut (zero fade)", price: "$30" },
+      { name: "Haircut & beard trim", price: "$45" },
+      { name: "Haircut & beard trim line up(blade)", price: "$50" },
+      { name: "Haircut & beard trim Line-up (machine)", price: "$47" },
+      { name: "Haircut & line-up beard(blade)", price: "$39.99" },
+      { name: "Haircut & line-up (machine)", price: "$38.45" },
+      { name: "Haircut & beard hot towel shave (blade)", price: "$47.99" },
+      { name: "Scissor cut", price: "$33.25" },
+      { name: "Buzzcut", price: "$24.99" },
+      { name: "Buzzcut & Skin Fade", price: "$30" },
+      { name: "Line-up, hair & beard (blade)", price: "$20" },
     ],
   },
   {
-    category: "Side Fades",
+    category: "Fades",
     items: [
-      { name: "Side Fade", price: "$30" },
-      { name: "Side Fade & Beard", price: "$40" },
-      { name: "Side Fade & Beard & Face Wax", price: "$50" },
-      { name: "Side Fade & Beard & Face Wax & Threading", price: "$60" },
-      { name: "Side Fade & Beard & Face Wax & Threading & Hair Color", price: "$70" },
-      { name: "Side Fade & Beard & Face Wax & Threading & Hair Color & Hair Treatment", price: "$80" },
-      { name: "Side Fade & Beard & Face Wax & Threading & Hair Color & Hair Treatment & Hair Styling", price: "$90" },
+      { name: "Side fade & beard trim", price: "$37.99" },
+      { name: "Side fade & beard trim line-up (blade)", price: "$47.99" },
+      { name: "Side fade & beard trim line-up (machine)", price: "$45" },
+      { name: "Side fade & line-up beard (blade)", price: "$35" },
+      { name: "Side fade & line-up beard (machine)", price: "$33.65" },
+      { name: "Side fade & beard hot tower shave (blade)", price: "$47.75" },
+      { name: "Buzz cut & beard trim line-up (blade)", price: "$50" },
+      { name: "Buzz cut & beard trim line-up (machine)", price: "$47.50" },
+      { name: "Shampoo & wash", price: "$5" },
+      { name: "Full shave with hot towel (head)", price: "$35" },
+      { name: "Hair design", price: "$6 & up" },
+      { name: "Hair styling", price: "$15" },
     ],
   },
   {
-    category: "Face Waxing/Threading",
+    category: "Face Waxing",
     items: [
-      { name: "Face Wax", price: "$20" },
-      { name: "Face Threading", price: "$25" },
-      { name: "Face Wax & Threading", price: "$35" },
+      { name: "Ears wax or threading", price: "$10" },
+      { name: "Nose waxing", price: "$10" },
+      { name: "Unibrow threading", price: "$7" },
+      { name: "Eyebrows waxing", price: "$15" },
+      { name: "Eyebrows shaping (blade)", price: "$10" },
+      { name: "Forehead wax or threading", price: "$8" },
+      { name: "Cheeks wax or threading", price: "$10" },
+      { name: "Full face wax or threading (cheeks, forehead, ears, nose and eyebrows)", price: "$30" },
+      { name: "Beard line-up wax or threading", price: "$15" },
+      { name: "Facial (steam, hot towel, black mask and more) - 45 min", price: "$55" },
     ],
   },
   {
-    category: "Beard Services",
+    category: "Beard",
     items: [
-      { name: "Beard Trim", price: "$15" },
-      { name: "Beard Trim & Shape", price: "$25" },
-      { name: "Beard Trim & Shape & Color", price: "$35" },
+      { name: "Beard trim", price: "$15" },
+      { name: "Beard trim (scissors)", price: "$15" },
+      { name: "Line-up beard (blade)", price: "$10" },
+      { name: "Line-up beard (machine)", price: "$8.99" },
+      { name: "Beard trim line-up (blade)", price: "$25" },
+      { name: "Beard trim line-up (machine)", price: "$24" },
+      { name: "Hot towel", price: "$5" },
+      { name: "Beard Hot towel shave (blade)", price: "$30" },
+      { name: "Hair dye", price: "$45" },
+      { name: "Beard dye (colouring)", price: "$24.99" },
+      { name: "Moustache dye (colouring)", price: "$7" },
+      { name: "Moustache trim", price: "$5" },
+      { name: "Steam face shave", price: "$35" },
+      { name: "Beard trim line up (blade) and hot tower", price: "$28.50" },
+      { name: "Hair & beard dye", price: "$70" },
+      { name: "Eyebrow dye", price: "$10" },
     ],
   },
 ];
 
 export default function ServicesAccordion() {
+  // Keep all categories open by default
   const [openCategory, setOpenCategory] = useState<string | null>(null);
   const contentRefs = useRef<(HTMLDivElement | null)[]>([]);
   const [headerHeights, setHeaderHeights] = useState<number[]>([]);
@@ -66,50 +100,26 @@ export default function ServicesAccordion() {
     <div className="py-12">
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
         {services.map((category, idx) => {
-          const isOpen = openCategory === category.category;
-          const headerHeight = headerHeights[idx] || 64;
-          const contentHeight = contentHeights[idx] || 0;
+          const isOpen = true;
           return (
             <div
               key={category.category}
-              className={clsx(
-                'w-full bg-black/95 rounded-lg shadow-xl border overflow-hidden transition-all duration-300',
-                isOpen ? 'border-gold/40 scale-105' : 'border-gold/20 hover:border-gold/30'
-              )}
-              style={{ minHeight: 0, paddingBottom: 0, height: isOpen ? headerHeight + contentHeight : headerHeight, boxShadow: isOpen ? '0 8px 32px 0 rgba(212,175,55,0.15)' : '0 2px 8px 0 rgba(212,175,55,0.05)', borderColor: isOpen ? '#D4AF37' : 'rgba(212,175,55,0.2)' }}
+              className="w-full bg-white rounded-lg shadow-lg border border-gray-200 overflow-hidden transition-all duration-300 hover:shadow-xl"
+              style={{ minHeight: '600px' }}
             >
-              <div
-                className="flex items-center justify-between px-6 py-4 cursor-pointer select-none"
-                onClick={() => setOpenCategory(isOpen ? null : category.category)}
-                style={{ minHeight: 64 }}
-              >
-                <span className="text-lg font-bold text-gold font-display">{category.category}</span>
-                <ChevronDown className={clsx('w-6 h-6 text-gold transition-transform duration-300', isOpen && 'rotate-180')} />
+              <div className="bg-black text-white px-6 py-4 border-b border-gray-200">
+                <h3 className="text-lg font-bold font-display">{category.category}</h3>
               </div>
-              <div
-                ref={el => { contentRefs.current[idx] = el; }}
-                style={{
-                  opacity: isOpen ? 1 : 0,
-                  pointerEvents: isOpen ? 'auto' : 'none',
-                  transition: 'opacity 0.3s',
-                  height: isOpen ? contentHeight : 0,
-                  overflow: 'hidden',
-                }}
-              >
-                {isOpen && (
-                  <div className="px-6 pb-4 space-y-3 animate-fade-in">
-                    {category.items.map((item, index) => (
-                      <div
-                        key={item.name}
-                        className="flex justify-between items-center py-2 border-b border-gold/10 last:border-0 animate-fade-in"
-                        style={{ animationDelay: `${index * 0.05}s` }}
-                      >
-                        <span className="text-white/90 font-inter">{item.name}</span>
-                        <span className="text-gold font-inter">{item.price}</span>
-                      </div>
-                    ))}
+              <div className="p-6 space-y-3 flex-1">
+                {category.items.map((item, index) => (
+                  <div
+                    key={item.name}
+                    className="flex justify-between items-center py-3 border-b border-gray-100 last:border-0"
+                  >
+                    <span className="text-black font-semibold text-base flex-1 pr-4 leading-tight">{item.name}</span>
+                    <span className="text-gold font-bold text-base whitespace-nowrap">{item.price}</span>
                   </div>
-                )}
+                ))}
               </div>
             </div>
           );

@@ -137,6 +137,7 @@ export default function Home() {
       <Testimonials />
       <Gallery />
       <Booking />
+      <Footer />
     </>
   );
 }
