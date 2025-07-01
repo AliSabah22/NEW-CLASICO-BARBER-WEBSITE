@@ -2,33 +2,71 @@
 
 import { useEffect } from 'react';
 
-export default function Error({
-  error,
-  reset,
-}: {
+interface ErrorProps {
   error: Error & { digest?: string };
   reset: () => void;
-}) {
+}
+
+export default function Error({ error, reset }: ErrorProps) {
   useEffect(() => {
-    console.error(error);
+    // Log the error to an error reporting service
+    console.error('Error:', error);
   }, [error]);
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-black text-white">
-      <div className="text-center max-w-md mx-auto px-4">
-        <h2 className="text-2xl font-display text-gold mb-4">
+    <div className="min-h-screen flex items-center justify-center bg-gray-50">
+      <div className="max-w-md w-full bg-white shadow-lg rounded-lg p-6 text-center">
+        <div className="mb-4">
+          <svg
+            className="mx-auto h-12 w-12 text-red-500"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth={2}
+              d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-2.5L13.732 4c-.77-.833-1.964-.833-2.732 0L3.732 16.5c-.77.833.192 2.5 1.732 2.5z"
+            />
+          </svg>
+        </div>
+        
+        <h2 className="text-xl font-semibold text-gray-900 mb-2">
           Something went wrong!
         </h2>
-        <p className="text-white/80 mb-6">
-          We apologize for the inconvenience. Please try again.
+        
+        <p className="text-gray-600 mb-6">
+          We encountered an unexpected error. Please try again.
         </p>
-        <button
-          onClick={reset}
-          className="bg-gold text-black px-6 py-3 rounded-md font-semibold hover:bg-gold/80 transition-colors duration-200"
-        >
-          Try again
-        </button>
+        
+        <div className="space-y-3">
+          <button
+            onClick={reset}
+            className="w-full bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700 transition-colors"
+          >
+            Try again
+          </button>
+          
+          <button
+            onClick={() => window.location.href = '/'}
+            className="w-full bg-gray-200 text-gray-800 px-4 py-2 rounded-md hover:bg-gray-300 transition-colors"
+          >
+            Go to homepage
+          </button>
+        </div>
+        
+        {process.env.NODE_ENV === 'development' && (
+          <details className="mt-4 text-left">
+            <summary className="cursor-pointer text-sm text-gray-500 hover:text-gray-700">
+              Error details (development only)
+            </summary>
+            <pre className="mt-2 text-xs text-red-600 bg-red-50 p-2 rounded overflow-auto">
+              {error.message}
+            </pre>
+          </details>
+        )}
       </div>
     </div>
   );
-}
+} 

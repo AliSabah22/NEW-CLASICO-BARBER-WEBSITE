@@ -22,6 +22,7 @@ export default function Navigation() {
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
       const target = event.target as Element;
+      
       if (isMobileMenuOpen && !target.closest('nav')) {
         setIsMobileMenuOpen(false);
       }

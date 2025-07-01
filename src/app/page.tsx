@@ -7,10 +7,9 @@ import Image from "next/image";
 import Navigation from "../components/Navigation";
 import Services from "../components/Services";
 import SignatureExperience from "../components/SignatureExperience";
-import Testimonials from "../components/sections/Testimonials";
+import Testimonials from "../components/Testimonials";
 import ContentGallery from "../components/ContentGallery";
 import Footer from "../components/Footer";
-import Gallery from '../components/sections/Gallery';
 import dynamic from 'next/dynamic';
 import LoadingState from '../components/ui/LoadingState'
 import { scrollToSection } from '../utils/scroll';
@@ -20,6 +19,16 @@ const Booking = dynamic(() => import('../components/sections/Booking'), {
   ssr: false,
   loading: () => (
     <div className="min-h-[600px] flex items-center justify-center">
+      <LoadingState size="lg" />
+    </div>
+  ),
+});
+
+// Dynamically import the Gallery component
+const Gallery = dynamic(() => import('../components/ContentGallery'), {
+  ssr: false,
+  loading: () => (
+    <div className="min-h-[400px] flex items-center justify-center">
       <LoadingState size="lg" />
     </div>
   ),

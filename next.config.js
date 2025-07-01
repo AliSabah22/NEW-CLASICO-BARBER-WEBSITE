@@ -7,7 +7,10 @@ const nextConfig = {
   reactStrictMode: true,
   swcMinify: true,
   
-  // Optimized image settings for speed
+  // Exclude minimal-vercel-test from build
+  pageExtensions: ['tsx', 'ts', 'jsx', 'js'],
+  
+  // Optimized image settings for Vercel
   images: {
     formats: ['image/webp', 'image/avif'],
     deviceSizes: [640, 750, 828, 1080, 1200, 1920],
@@ -15,6 +18,13 @@ const nextConfig = {
     minimumCacheTTL: 31536000,
     dangerouslyAllowSVG: true,
     contentSecurityPolicy: "default-src 'self'; script-src 'none'; sandbox;",
+    // Allow all domains for Vercel deployment
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: '**',
+      },
+    ],
     // Enable image optimization for production
     unoptimized: false,
   },
@@ -29,6 +39,12 @@ const nextConfig = {
 
   // Webpack optimizations
   webpack: (config, { dev, isServer }) => {
+    // Exclude minimal-vercel-test from webpack
+    config.resolve.alias = {
+      ...config.resolve.alias,
+      'minimal-vercel-test': false,
+    };
+    
     // Optimize SVG handling
     config.module.rules.push({
       test: /\.svg$/,
